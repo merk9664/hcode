@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+ <html>
+ <head>
+ <meta charset = "utf-8">
+ <title> Date and Time </title>
+ <style>
+    body
+    {
+        background-image: url('https://s3.bmp.ovh/imgs/2022/06/18/38be03d14ef7c140.jpeg');
+        background-repeat: no-repeat;
+        background-size: 390px;
+        background-position: center top;
+    }
+    div 
+    {
+        text-align: center;
+        font-weight: bold;
+        font-family: "微软雅黑";
+    }
+    #clockDate 
+    {
+        font-size: 40px;
+        color: rgb(36,174,98);
+    }
+    #clockTime 
+    {
+        font-size: 56px;
+        color: rgb(36,174,98);
+        line-height: 125%;
+    }
+ </style>
+ </head>
+ <body>
+    <p><br></p>
+    <p><br></p>
+    <p><br></p>
+    <div class = "clock">
+        <div id = "clockDate"></div>
+        <div id = "clockTime"></div>
+    </div>
+    <script>
+        showDateTime();
+        let timer = setInterval(showDateTime, 1000);
+        function showDateTime() {
+            let months = new Date().getMonth();
+            let days = new Date().getDate();
+            let hour = new Date().getHours();
+            let minute = new Date().getMinutes();
+            let second = new Date().getSeconds();
+            months = months + 1;
+            minute = update(minute);
+            second = update(second);
+            function update(t) {
+                if (t < 10) {
+                    return "0" + t;
+                }
+                else {
+                    return t;
+                }
+            }
+            let showTime = '';
+            showDate = months + "月" + days + "日";
+            showTime = hour + ":" + minute + ":" + second;
+            document.getElementById("clockDate").innerHTML = showDate;
+            document.getElementById("clockTime").innerHTML = showTime;
+        }
+    </script>
+ </body>
+ </html>
